@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Switch from '@material-ui/core/Switch';
 
 function App() {
   const [value, setValue] = useState('');
@@ -14,7 +15,7 @@ function App() {
     <>
   <form onSubmit={(e) => {
     e.preventDefault()
-    console.log(value, today)}} noValidate>
+    console.log(value)}} noValidate>
   <TextField
     onChange={(e) => setValue(e.target.value)}
     id="date"
@@ -26,7 +27,7 @@ function App() {
     }}
     />
     <Button type="submit" variant="contained" color="secondary">
-    Submit
+    <Switch />
   </Button>
 </form>
   </>
