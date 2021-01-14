@@ -1,13 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function App() {
   const [value, setValue] = useState('');
   const [checkedB, setCheckedB] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000);
+  });
   const handleChange = (event) => {
     setCheckedB(!checkedB)
   };
@@ -19,6 +25,9 @@ function App() {
   today = `${yyyy}-${mm}-${dd}` 
   return (
     <>
+    {loading? 
+    <CircularProgress color="secondary" />
+    :
   <form onSubmit={(e) => {
     e.preventDefault()
     console.log(value)}} noValidate>
@@ -35,12 +44,12 @@ function App() {
     <Button onClick={() =>console.log(checkedB)} type="submit" variant="contained" color="secondary">
       Ultra Violence
   </Button>
-</form>
-<Switch 
+<Switch
 checked={checkedB}
 onChange={handleChange}
 color="primary"
 name="checkedB"/>
+</form>}
   </>
   )
 }
