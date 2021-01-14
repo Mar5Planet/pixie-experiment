@@ -5,6 +5,12 @@ import Switch from '@material-ui/core/Switch';
 
 function App() {
   const [value, setValue] = useState('');
+  const [checkedB, setCheckedB] = useState(true);
+
+
+  const handleChange = (event) => {
+    setCheckedB(!checkedB)
+  };
 
   let today = new Date();
   const dd = String(today.getDate()).padStart(2, '0');
@@ -26,10 +32,15 @@ function App() {
       shrink: true,
     }}
     />
-    <Button type="submit" variant="contained" color="secondary">
-    <Switch />
+    <Button onClick={() =>console.log(checkedB)} type="submit" variant="contained" color="secondary">
+      Ultra Violence
   </Button>
 </form>
+<Switch 
+checked={checkedB}
+onChange={handleChange}
+color="primary"
+name="checkedB"/>
   </>
   )
 }
